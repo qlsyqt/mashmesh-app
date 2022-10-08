@@ -1,0 +1,401 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "ChainlinkCancelled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "ChainlinkFulfilled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "ChainlinkRequested",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferRequested",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "requestId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "user",
+        "type": "address[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "addr",
+        "type": "address[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "ens",
+        "type": "string[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "twitter_name",
+        "type": "string[]"
+      }
+    ],
+    "name": "RequestBasicProfileFulfilled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "requestId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "user",
+        "type": "address[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "snapshot",
+        "type": "string[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "snapshot_link",
+        "type": "string[]"
+      }
+    ],
+    "name": "RequestGovernanceFulfilled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "requestId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "user",
+        "type": "address[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "follower",
+        "type": "string[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "following",
+        "type": "string[]"
+      }
+    ],
+    "name": "RequestSocialStatusFulfilled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "requestId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "user",
+        "type": "address[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "if_staking",
+        "type": "string[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "string[]",
+        "name": "nft",
+        "type": "string[]"
+      }
+    ],
+    "name": "RequestassetsAndDefiFulfilled",
+    "type": "event"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "AssetsAndDefiData",
+    "outputs": [
+      { "internalType": "string", "name": "if_staking", "type": "string" },
+      { "internalType": "string", "name": "nft", "type": "string" },
+      { "internalType": "string", "name": "nft_link", "type": "string" },
+      { "internalType": "uint256", "name": "update_time", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "BasicProfileData",
+    "outputs": [
+      { "internalType": "address", "name": "addr", "type": "address" },
+      { "internalType": "string", "name": "ens", "type": "string" },
+      { "internalType": "string", "name": "twitter_name", "type": "string" },
+      { "internalType": "uint256", "name": "update_time", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "GovernanceData",
+    "outputs": [
+      { "internalType": "string", "name": "snapshot", "type": "string" },
+      { "internalType": "string", "name": "snapshot_link", "type": "string" },
+      { "internalType": "uint256", "name": "update_time", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "SocialStatusData",
+    "outputs": [
+      { "internalType": "string", "name": "follower", "type": "string" },
+      { "internalType": "string", "name": "following", "type": "string" },
+      { "internalType": "uint256", "name": "update_time", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "acceptOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_requestId", "type": "bytes32" },
+      { "internalType": "uint256", "name": "_payment", "type": "uint256" },
+      {
+        "internalType": "bytes4",
+        "name": "_callbackFunctionId",
+        "type": "bytes4"
+      },
+      { "internalType": "uint256", "name": "_expiration", "type": "uint256" }
+    ],
+    "name": "cancelRequest",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_requestId", "type": "bytes32" },
+      { "internalType": "address[]", "name": "user", "type": "address[]" },
+      { "internalType": "string[]", "name": "if_staking", "type": "string[]" },
+      { "internalType": "string[]", "name": "nft", "type": "string[]" },
+      { "internalType": "string[]", "name": "nft_link", "type": "string[]" }
+    ],
+    "name": "fulfillAssetsAndDefi",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_requestId", "type": "bytes32" },
+      { "internalType": "address[]", "name": "user", "type": "address[]" },
+      { "internalType": "address[]", "name": "addr", "type": "address[]" },
+      { "internalType": "string[]", "name": "ens", "type": "string[]" },
+      { "internalType": "string[]", "name": "twitter_name", "type": "string[]" }
+    ],
+    "name": "fulfillBasicProfile",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_requestId", "type": "bytes32" },
+      { "internalType": "address[]", "name": "user", "type": "address[]" },
+      { "internalType": "string[]", "name": "snapshot", "type": "string[]" },
+      {
+        "internalType": "string[]",
+        "name": "snapshot_link",
+        "type": "string[]"
+      }
+    ],
+    "name": "fulfillGovernance",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_requestId", "type": "bytes32" },
+      { "internalType": "address[]", "name": "user", "type": "address[]" },
+      { "internalType": "string[]", "name": "follower", "type": "string[]" },
+      { "internalType": "string[]", "name": "following", "type": "string[]" }
+    ],
+    "name": "fulfillSocialStatus",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getChainlinkToken",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_oracle", "type": "address" },
+      { "internalType": "string", "name": "_jobId", "type": "string" }
+    ],
+    "name": "requestAssetsAndDefi",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_oracle", "type": "address" },
+      { "internalType": "string", "name": "_jobId", "type": "string" }
+    ],
+    "name": "requestBasicProfile",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_oracle", "type": "address" },
+      { "internalType": "string", "name": "_jobId", "type": "string" }
+    ],
+    "name": "requestGovernance",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_oracle", "type": "address" },
+      { "internalType": "string", "name": "_jobId", "type": "string" }
+    ],
+    "name": "requestSocialStatus",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "to", "type": "address" }],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "withdrawLink",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
