@@ -1,0 +1,60 @@
+.walletBtn {
+    font-weight: 600;
+    color: #fff;
+    background: #464646;
+    border-radius: 20px;
+    padding: 0 20px;
+    height: 46px;
+    line-height: 46px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  
+    &:hover {
+        background: #222222;
+    }
+    @media (max-width: 768px){
+        display: none;
+    }
+}
+
+.isTrans{
+    border: 1px solid #979797;
+    background: transparent;
+}
+
+.walletMenu {
+    margin-top: 8px;
+}
+
+.menuLight {
+    color: #000;
+    background: #fff;
+
+    &:hover {
+        background: #eee;
+    }
+}
+
+.menuHeader {
+    position: absolute;
+    right: 24px;
+    top: 56px;
+    z-index: 9;
+}
+
+.walletTisDiv {
+    position: absolute;
+    width: 400px;
+    right: -4px;
+    z-index: 9;
+    top: 50px;
+}
+
+.walletTisHeaderDiv {
+    position: absolute;
+    width: 400px;
+    right: 20px;
+    z-index: 9;
+    top: 60px;
+}

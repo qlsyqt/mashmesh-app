@@ -1,0 +1,29 @@
+.page {
+    background: #f4f4f4;
+}
+
+.handleArea {
+    padding: 36px 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+.mainContent{
+    height: calc(100vh - 72px);
+    display: flex;
+}
+
+@media (max-width: 768px){
+    .mainContent{
+        height: unset;
+        // margin-top: 72px;
+        flex-direction: column-reverse;
+    }
+}

@@ -1,0 +1,16 @@
+.flowApprove{
+    width: 60%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    background: rgb(255, 50, 0);
+    border-radius: 20px;
+    margin: 0 20%;
+    cursor: pointer;
+    display: block;
+    margin: 20px 20% 0px 20%;
+    &:hover{
+        color: #fff;
+    }
+}

@@ -1,0 +1,371 @@
+@import "../../styles/var.scss";
+
+.sidebar {
+    overflow-y: auto;
+    position: relative;
+    width: $sidebarWidth;
+    flex: 0 0 $sidebarWidth;
+    background: $white;
+    padding: 12px 14px 8px;
+    border-right: $border;
+    word-break: break-all;
+
+    .loadingIcon {
+        font-size: 32px;
+        margin: 64px auto;
+        display: block;
+    }
+
+    .sidebarWrapper {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &.closed {
+        width: $sidebarClosedWidth;
+        flex: unset;
+    }
+
+    .iconMenu {
+        width: 20px;
+        cursor: pointer;
+
+        &.fixRight {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+        }
+    }
+
+    .btnSearchMode {
+        color: $white;
+        background: $black;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            background: #666;
+        }
+    }
+
+    .sidebarBottom {
+        margin-top: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #000000;
+    line-height: 32px;
+    margin-bottom: 8px;
+    font-family: "Jura";
+}
+
+.account {
+    font-size: 8px;
+    font-family: "Jura";
+    font-weight: 800;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    a {
+        color: #b3b3b3;
+    }
+
+    img {
+        cursor: pointer;
+        width: 12px;
+    }
+}
+
+.infoLine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    align-items: center;
+}
+
+.tabs {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .tab {
+        color: $red;
+        font-size: 12px;
+        line-height: 1;
+        font-family: "Syncopate";
+        font-weight: 400;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .check {
+        width: 12px;
+        height: 12px;
+        background: $white;
+        box-shadow: inset 0 0 4px $red;
+
+        &.checked {
+            background: $red;
+        }
+    }
+}
+
+.ensList {
+    gap: 9px;
+    margin: 9px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    .ensItem {
+        cursor: pointer;
+        color: #000000;
+        padding: 6px 10px;
+        border-radius: 4px;
+        box-shadow: inset 0 0 4px $red;
+    }
+}
+
+.accountType {
+    margin-top: 9px;
+}
+
+.switchWrapper {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.info {
+    font-family: "Jura";
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.divider {
+    background: #d5d5d5;
+    height: 1px;
+    margin: 15px auto;
+}
+
+.avatarList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.featureList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .featureItem {
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 14px;
+
+        &.red {
+            color: $white;
+            background: $red;
+        }
+
+        &.green {
+            color: $black;
+            background: $green;
+        }
+    }
+}
+
+.toggleBtn {
+    color: $black;
+}
+
+.propertyLine {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-family: "Jura";
+    margin: 24px 0;
+    font-size: 9px;
+    line-height: 9px;
+
+    .icon {
+        width: 28px;
+    }
+
+    .title {
+        margin: 0;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 800;
+    }
+
+    .value {
+        line-height: 1.2;
+        font-size: 10px;
+        font-family: "Jura";
+    }
+
+    .valueIcon {
+        width: 28px;
+        position: relative;
+        transition: all 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            transform-origin: 0% 100%;
+            transform: scale(5);
+        }
+    }
+
+    .valueIconBig {
+        width: 100px;
+        position: fixed;
+    }
+
+    .valueContract {
+        color: #ff3300;
+    }
+
+    .copyIcon {
+        width: 12px;
+        height: 12px;
+        cursor: pointer;
+    }
+}
+
+.lens {
+    width: 100%;
+    background: #fff;
+    background-size: 100% 100%;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+    margin-bottom: 20px;
+
+    .lensInfo {
+        border-radius: 20px;
+        background: #fff;
+        padding-bottom: 20px;
+    }
+
+    .lensHead {
+        height: 120px;
+        position: relative;
+
+        .lensHeadPic {
+            position: absolute;
+            left: 50%;
+            margin-left: -35px;
+            height: 70px;
+            width: 70px;
+            border-radius: 100%;
+            bottom: -35px;
+        }
+
+        .lensHeadBac {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px 20px 0 0;
+        }
+
+    }
+
+    .lensHeadTit {
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .lensHeadNm {
+        font-size: 10px;
+        font-weight: 700;
+        text-align: center;
+        color: rgba(175, 175, 178);
+    }
+
+    .lensAmount {
+        display: flex;
+        font-size: 10px;
+        font-family: "Jura";
+        margin: 10px 0;
+
+        >div {
+            flex: 1;
+            text-align: center;
+
+            >span {
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .lensContent {
+        margin: 0 30px;
+        font-family: "Jura";
+        color: rgba(190, 190, 190);
+        overflow-y: auto;
+        max-height: 300px;
+    }
+
+    .lensBtn {
+        width: 60%;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        background: rgb(255, 50, 0);
+        border-radius: 20px;
+        margin: 0 20%;
+        cursor: pointer;
+        margin: 20px auto 0;
+    }
+
+}
+
+.lesContent {
+
+    .copyIcon {
+        width: 12px;
+        height: 12px;
+        cursor: pointer;
+        margin-top: -2px;
+    }
+
+    .lensDes {
+        font-family: "Jura";
+        font-size: 14px;
+        font-weight: 700;
+
+        span {
+            font-size: 10px;
+            font-weight: 500;
+        }
+    }
+}

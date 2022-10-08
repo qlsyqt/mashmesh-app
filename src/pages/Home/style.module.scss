@@ -1,0 +1,96 @@
+@import "../../styles/var.scss";
+
+.top {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .slogan {
+        font-family: "Jura";
+        font-size: 24px;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 24px;
+        flex-wrap: wrap;
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        .sloganSmall {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+
+    .poweredBy {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 12px;
+        font-weight: 600;
+        color: $red;
+        gap: 5px;
+        line-height: 17px;
+    }
+
+    .logoRed {
+        width: 54px;
+    }
+    @media (max-width: 768px) {
+        top: 24px;
+        .slogan {
+            font-size: 20px;
+            line-height: 20px;
+        }
+        .sloganSmall {
+            font-size: 16px;
+            line-height: 14px;
+        }
+    }
+}
+
+.walletWrapper {
+    position: absolute;
+    right: 18px;
+    top: 0;
+}
+
+.homepage {
+    background: url('../../assets/home-bg.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.walletBtn {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+}
+
+.sloganWrapper {
+    display: inline-block;
+    margin-top: -32px;
+    margin-bottom: 64px;
+    .logoHome {
+        width: 500px;
+    }
+}
+
+.switchWrapper {
+    margin-top: 16px;
+    text-align: right;
+
+    .switchBtn {
+        font-size: 14px;
+        font-weight: 600;
+        color: $red;
+        line-height: 13px;
+        text-decoration: underline;
+    }
+}
