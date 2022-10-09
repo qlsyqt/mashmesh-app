@@ -4,6 +4,7 @@ import { nodeInfoState } from "store/atom";
 import ApproveButton from "components/ApproveButton";
 import { LoadingOutlined } from "@ant-design/icons";
 import useWeb3Context from "hooks/useWeb3Context";
+import { switchChain } from "lib/tool";
 import useLenshubContract from "contract/useLenshubContract";
 import useErc20Contract from "contract/useErc20Contract";
 import useErc721Contract, { formatIPFS } from "contract/useErc721Contract";
@@ -28,7 +29,7 @@ export default function Lens() {
   const erc721Contract = useErc721Contract();
   const erc20Contract = useErc20Contract();
   const feeFollowContract = useFeeFollowContract();
-  const { account } = useWeb3Context();
+  const { account, chainId } = useWeb3Context();
 
   const doFollow = async () => {
     const res = await lenshubContract.follow(nodeInfo.profileId, feeInfo);
@@ -57,6 +58,8 @@ export default function Lens() {
     setLoading(true);
     const profileInfoRaw = await lensApi.getProfileByHandle(nodeInfo.handle);
     setProfileInfo(profileInfoRaw);
+    setLoading(false);
+
     const followBalanceRaw = await erc721Contract.getAll(
       profileInfoRaw.followNftAddress
     );
@@ -67,8 +70,6 @@ export default function Lens() {
     );
 
     setFeeInfo(feeInfoRaw);
-
-    setLoading(false);
   };
 
   const getTokenInfo = async () => {
@@ -92,87 +93,97 @@ export default function Lens() {
       return;
     }
     getProfile();
-  }, [account, nodeInfo.handle]);
+  }, [account, nodeInfo.handle, chainId]);
 
   return (
     <div className={style.lesContent}>
       <div className={style.title}>Lens</div>
-      {loading ? (
-        <LoadingOutlined className={style.loadingIcon} />
-      ) : (
-        <div className={style.lens}>
-          <div className={style.lensHead}>
-            {profileInfo?.coverPicture?.original?.url && (
-              <img
-                alt=""
-                className={style.lensHeadBac}
-                src={formatIPFS(profileInfo?.coverPicture?.original?.url)}
-              />
-            )}
+      <div>
+        {loading ? (
+          <LoadingOutlined className={style.loadingIcon} />
+        ) : (
+          <div className={style.lens}>
+            <div className={style.lensHead}>
+              {profileInfo?.coverPicture?.original?.url && (
+                <img
+                  alt=""
+                  className={style.lensHeadBac}
+                  src={formatIPFS(profileInfo?.coverPicture?.original?.url)}
+                />
+              )}
 
-            {profileInfo?.picture?.original?.url ? (
-              <img
-                alt=""
-                className={style.lensHeadPic}
-                src={formatIPFS(profileInfo?.picture?.original?.url)}
-              />
-            ) : (
-              <img alt="" src={IconHead} className={style.lensHeadPic} />
-            )}
-          </div>
-          <div className={style.lensInfo}>
-            <div className={style.lensHeadTit}>{profileInfo.name}</div>
-            <div className={style.lensHeadNm}>@{profileInfo.handle}</div>
-            <div className={style.lensAmount}>
-              <div>
-                <span>{profileInfo?.stats?.totalFollowers}</span> followers
-              </div>
-              <div>
-                <span>{profileInfo?.stats?.totalFollowing}</span> following
-              </div>
+              {profileInfo?.picture?.original?.url ? (
+                <img
+                  alt=""
+                  className={style.lensHeadPic}
+                  src={formatIPFS(profileInfo?.picture?.original?.url)}
+                />
+              ) : (
+                <img alt="" src={IconHead} className={style.lensHeadPic} />
+              )}
             </div>
-            <div className={style.lensContent}>{profileInfo.bio}</div>
-            {account && (
-              <>
-                {followBalance.length === 0 ? (
-                  <>
-                    <ApproveButton
-                      skipCheck={
-                        !feeInfo || !feeInfo.amount || feeInfo.amount === "0"
-                      }
-                      tokenAddress={feeInfo.currency}
-                      contractAddress={config.contracts.lenshub}
-                    >
-                      <div className={style.lensBtn} onClick={doFollow}>
-                        Follow
-                      </div>
-                    </ApproveButton>
+            <div className={style.lensInfo}>
+              <div className={style.lensHeadTit}>{profileInfo.name}</div>
+              <div className={style.lensHeadNm}>@{profileInfo.handle}</div>
+              <div className={style.lensAmount}>
+                <div>
+                  <span>{profileInfo?.stats?.totalFollowers}</span> followers
+                </div>
+                <div>
+                  <span>{profileInfo?.stats?.totalFollowing}</span> following
+                </div>
+              </div>
+              <div className={style.lensContent}>{profileInfo.bio}</div>
+              {account && (
+                <>
+                  {followBalance.length === 0 ? (
+                    <>
+                      <ApproveButton
+                        skipCheck={
+                          !feeInfo || !feeInfo.amount || feeInfo.amount === "0"
+                        }
+                        tokenAddress={feeInfo.currency}
+                        contractAddress={config.contracts.lenshub}
+                      >
+                        <div className={style.lensBtn} onClick={doFollow}>
+                          Follow
+                        </div>
+                      </ApproveButton>
 
-                    {feeInfo.amount && tokenInfo.symbol && (
-                      <div className="text-center">
-                        Price:{" "}
-                        {new BN(feeInfo.amount)
-                          .shiftedBy(-tokenInfo.decimals)
-                          .toString()}{" "}
-                        {tokenInfo.symbol}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <div
-                    className={style.lensBtn}
-                    onClick={doUnfollow}
-                    onMouseEnter={() => setIsFollowing((prev) => !prev)}
-                    onMouseLeave={() => setIsFollowing((prev) => !prev)}
-                  >
-                    {isFollowing ? "Following" : "Unfollow"}
-                  </div>
-                )}
-              </>
-            )}
+                      {feeInfo.amount && tokenInfo.symbol && (
+                        <div className="text-center">
+                          Price:{" "}
+                          {new BN(feeInfo.amount)
+                            .shiftedBy(-tokenInfo.decimals)
+                            .toString()}{" "}
+                          {tokenInfo.symbol}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div
+                      className={style.lensBtn}
+                      onClick={doUnfollow}
+                      onMouseEnter={() => setIsFollowing((prev) => !prev)}
+                      onMouseLeave={() => setIsFollowing((prev) => !prev)}
+                    >
+                      {isFollowing ? "Following" : "Unfollow"}
+                    </div>
+                  )}
+                </>
+              )}
+              {config.chainId !== chainId && (
+                <a
+                  className={style.switchHint}
+                  onClick={() => switchChain(config.chainId)}
+                >
+                  Switch to polygon to continue.
+                </a>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {nodeInfo.profileId && (
         <div className={style.lensDes}>

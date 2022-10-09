@@ -9,7 +9,13 @@
     padding: 12px 14px 8px;
     border-right: $border;
     word-break: break-all;
-
+    .switchHint {
+        color: red;
+        padding: 0 12px;
+        margin-top: 12px;
+        text-align: center;
+        display: block;
+    }
     .loadingIcon {
         font-size: 32px;
         margin: 64px auto;
