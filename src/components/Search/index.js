@@ -206,6 +206,7 @@ export default function Search({ isHeader, isTrans }) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
+            autoFocus={true}
             className={style.input}
             placeholder="Search by Address, avatar or name of projects..."
           />

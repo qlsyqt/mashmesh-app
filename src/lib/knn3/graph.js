@@ -374,7 +374,7 @@ const getAddressRelations = async (
         return;
       }
       res[target].forEach((item) => {
-        if (allNodesOnGraph.indexOf(item.id) === -1) {
+        if (allNodesOnGraph.indexOf(item.handle) === -1) {
           originalGraphData.nodes.push({
             ...getNode(
               {
