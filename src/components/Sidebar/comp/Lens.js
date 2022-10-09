@@ -91,7 +91,6 @@ export default function Lens() {
     if (!nodeInfo.handle || !account) {
       return;
     }
-    console.log('get it', 'prof')
     getProfile();
   }, [account, nodeInfo.handle]);
 
@@ -181,15 +180,15 @@ export default function Lens() {
         </div>
       )}
 
-      {nodeInfo.creator && (
+      {profileInfo.ownedBy && (
         <div className={style.lensDes}>
           Owner：
           <span>
-            {nodeInfo.creator.slice(0, 3)}...{nodeInfo.creator.slice(-3)}{" "}
+            {profileInfo.ownedBy.slice(0, 3)}...{profileInfo.ownedBy.slice(-3)}{" "}
           </span>
           <img
             src={IconCopy}
-            onClick={() => copyToClipboard(nodeInfo.creator)}
+            onClick={() => copyToClipboard(profileInfo.ownedBy)}
             className={style.copyIcon}
           />
         </div>
