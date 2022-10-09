@@ -1,4 +1,4 @@
-# mashmesh-app
+# Lens on MashMesh-app
 
 The project is a social discovery search engine built on the basis of Lens Protocol.
 * We get the data of Profile NFTs and Follow (NFTs) from Lens Protocol, and tranform them into Graph-structured data. 
